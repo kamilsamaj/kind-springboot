@@ -62,7 +62,7 @@ curl localhost:8080/actuator/health
 ## Create your KIND cluster with local registry
 * Start local Docker registry in your KIND k8s cluster
 ```bash
-./run-local-registry.sh
+./run-kind-with-local-registry.sh
 ```
 
 * Check your cluster is running

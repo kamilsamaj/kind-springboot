@@ -2,6 +2,7 @@
 Experimenting with Kind, SprintBoot, ServiceMesh, etc.
 
 ## Prerequisites
+* asdf (see below)
 * curl
 * git
 * docker
@@ -126,6 +127,24 @@ docker stop registry
 docker rmi demo:0.0.1-SNAPSHOT
 docker system prune
 ```
+
+## Short version
+If you already have everything installed, just run these steps:
+```bash
+asdf install
+./mvnw spring-boot:build-image
+./run-kind-with-local-registry.sh
+docker tag demo:0.0.1-SNAPSHOT localhost:5000/demo:0.0.1-SNAPSHOT
+docker push localhost:5000/demo:0.0.1-SNAPSHOT
+kubectl apply -f deployment.yaml
+kubectl port-forward svc/demo 8080:8080
+```
+
+And check your app:
+```bash
+curl localhost:8080/actuator/health
+```
+
 
 ## References
 * https://spring.io/guides/gs/spring-boot-kubernetes/

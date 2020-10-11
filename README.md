@@ -123,7 +123,7 @@ curl localhost:8080/actuator/health
 ```bash
 ./mvnw clean
 kind delete cluster
-docker stop registry
+docker stop kind-registry
 docker rmi demo:0.0.1-SNAPSHOT
 docker system prune
 ```
